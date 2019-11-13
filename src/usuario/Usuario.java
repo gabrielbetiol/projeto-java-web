@@ -7,10 +7,15 @@ public class Usuario {
 	private String 	cpf;
 	private String 	email;
 	private String 	senha;
-	private String 	endereco;
+	private String 	end;
 	
 	public Usuario() {
-		// TODO Auto-generated constructor stub
+		
+	}
+	
+	public boolean checkLogin(){
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		return (usuarioDAO.checkLogin(this.getEmail(), this.getSenha()));
 	}
 
 	public int getId() {
@@ -54,10 +59,10 @@ public class Usuario {
 	}
 
 	public String getEndereco() {
-		return endereco;
+		return end;
 	}
 
 	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+		this.end = endereco;
 	}
 }

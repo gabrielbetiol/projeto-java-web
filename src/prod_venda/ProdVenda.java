@@ -2,37 +2,37 @@ package prod_venda;
 
 public class ProdVenda {
 
-	private int idProdVenda;
-	private int idVenda;
-	private int idProd;
+	private int id_prod_venda;
 	private int qnt;
+	private int id_venda;
+	private int id_prod;
 	
 	public ProdVenda() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public int getIdProdVenda() {
-		return idProdVenda;
+		return id_prod_venda;
 	}
 
 	public void setIdProdVenda(int idProdVenda) {
-		this.idProdVenda = idProdVenda;
+		this.id_prod_venda = idProdVenda;
 	}
 
 	public int getIdVenda() {
-		return idVenda;
+		return id_venda;
 	}
 
 	public void setIdVenda(int idVenda) {
-		this.idVenda = idVenda;
+		this.id_venda = idVenda;
 	}
 
 	public int getIdProd() {
-		return idProd;
+		return id_prod;
 	}
 
 	public void setIdProd(int idProd) {
-		this.idProd = idProd;
+		this.id_prod = idProd;
 	}
 
 	public int getQnt() {

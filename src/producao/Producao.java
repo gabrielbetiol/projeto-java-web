@@ -3,12 +3,12 @@ package producao;
 public class Producao {
 
 	private int 	id;
-	private int 	idUsuario;
-	private int 	qntd;
-	private float 	precoUnit;
 	private String 	tipo;
-	private String 	descr;
-	private String 	dataProd;
+	private int 	qtd;
+	private float 	preco_uni;
+	private String 	descricao;
+	private String 	data_prod;
+	private int 	id_usu;
 	
 	public Producao() {
 		// TODO Auto-generated constructor stub
@@ -23,27 +23,27 @@ public class Producao {
 	}
 
 	public int getIdUsuario() {
-		return idUsuario;
+		return id_usu;
 	}
 
 	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+		this.id_usu = idUsuario;
 	}
 
 	public int getQntd() {
-		return qntd;
+		return qtd;
 	}
 
 	public void setQntd(int qntd) {
-		this.qntd = qntd;
+		this.qtd = qntd;
 	}
 
 	public float getPrecoUnit() {
-		return precoUnit;
+		return preco_uni;
 	}
 
 	public void setPrecoUnit(float precoUnit) {
-		this.precoUnit = precoUnit;
+		this.preco_uni = precoUnit;
 	}
 
 	public String getTipo() {
@@ -55,19 +55,19 @@ public class Producao {
 	}
 
 	public String getDescr() {
-		return descr;
+		return descricao;
 	}
 
 	public void setDescr(String descr) {
-		this.descr = descr;
+		this.descricao = descr;
 	}
 
 	public String getDataProd() {
-		return dataProd;
+		return data_prod;
 	}
 
 	public void setDataProd(String dataProd) {
-		this.dataProd = dataProd;
+		this.data_prod = dataProd;
 	}
 	
 }

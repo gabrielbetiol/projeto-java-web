@@ -2,8 +2,8 @@ package vendas;
 
 public class Vendas {
 
-	private int id;
-	private String data;
+	private int 	id;
+	private String 	data;
 	
 	public Vendas() {
 		// TODO Auto-generated constructor stub
