@@ -13,6 +13,15 @@ public class Usuario {
 		
 	}
 	
+	public Usuario(String id, String nome, String cpf, String email, String senha, String end) {
+		this.id =  ((id=="") ? 0 : new Integer(id));
+		this.nome		= nome;
+		this.cpf		= cpf;
+		this.email		= email;
+		this.senha		= senha;
+		this.end		= end;
+	}
+	
 	public boolean checkLogin(){
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		return (usuarioDAO.checkLogin(this.getEmail(), this.getSenha()));

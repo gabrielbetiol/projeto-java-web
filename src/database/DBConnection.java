@@ -16,7 +16,7 @@ public class DBConnection {
 	public  boolean 	isConnected = false;
 	
 	public DBConnection() {
-		this.setSchema("localfarm");
+		this.setSchema("localfarmdb");
 		this.setHost("localhost");
 		this.setPort("3306");
 		this.setUser("root");
