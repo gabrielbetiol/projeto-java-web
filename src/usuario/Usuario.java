@@ -1,5 +1,9 @@
 package usuario;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+
 public class Usuario {
 
 	private int 	id;
@@ -22,9 +26,34 @@ public class Usuario {
 		this.end		= end;
 	}
 	
+	public Usuario(String id, String email, String senha) {
+		this.id 	=  ((id=="") ? 0 : new Integer(id));
+		this.nome 	= "";
+		this.cpf	= "";
+		this.email	= email;
+		this.senha	= senha;
+		this.end	= "";
+	}
+	
 	public boolean checkLogin(){
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		return (usuarioDAO.checkLogin(this.getEmail(), this.getSenha()));
+		ResultSet rs = usuarioDAO.checkLogin(this.getEmail(), this.getSenha());
+		try {
+			if (rs.next()){
+				this.id = rs.getInt("id");
+				this.nome = rs.getString("nome");
+				this.cpf = rs.getString("cpf");
+				this.email = rs.getString("email");
+				this.end = rs.getString("end");
+				
+				return (true);
+			} else {
+				return (false);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return (false);
 	}
 
 	public int getId() {

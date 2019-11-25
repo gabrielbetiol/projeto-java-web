@@ -7,24 +7,22 @@
 <link rel="stylesheet" href="Assets/css/bootstrap.min.css" >
 <link rel="stylesheet" href="Assets/css/index.css">
 
-<script type="text/javascript" src="Assets/js/boostrap.js"></script>
-<script type="text/javascript" src="Assets/js/d3.min.js"></script>
-<script type="text/javascript" src="Assets/js/index.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Graficos</title>
 </head>
 <body>
-	<div id="dashboard">
-		<p>Vendas x Produção</p>
-		<div class="chart">
+		<h1>Vendas x Produção</h1>
 
-		</div>
-	</div>
+		<svg class="line-chart"></svg>
 	
 	<ul></ul>
 	
+	<script type="text/javascript" src="Assets/js/boostrap.js"></script>
+	<script type="text/javascript" src="Assets/js/d3.min.js"></script>
+	<script type="text/javascript" src="Assets/js/index.js"></script>
 	<script>
-	
+		/*
 		var nomes = ['diego', 'joão', 'bruna', 'luana', 'marília'];
 		d3.select('ul')
 		  .selectAll('li')
@@ -33,7 +31,19 @@
 		  .append('li')
 		  .text(function(nome) { return nome; });
 		
+		*/
+		/*
+		var svg = d3.select('svg');
+		 svg.append('rect');
+			.attr('x', 50)
+			.attr('y', 50)
+			.attr('width', 200)
+			.attr('height', 200)
+			.attr('fill', 'green');
+		*/
+		
+		
 	</script>
-</body>
 
+</body>
 </html>

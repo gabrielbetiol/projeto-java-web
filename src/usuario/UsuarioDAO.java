@@ -3,6 +3,8 @@ package usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.sun.crypto.provider.RSACipher;
+
 import database.DBQuery;
 
 public class UsuarioDAO extends DBQuery {
@@ -22,14 +24,9 @@ public class UsuarioDAO extends DBQuery {
 		this.setKeyField("id");
 	}
 	
-	public boolean checkLogin(String email, String senha){
-		try{
-			ResultSet rs = select("email = '"+ email +"' AND senha = '"+ senha +"'");
-			return (rs.next());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return (false);
+	public ResultSet checkLogin(String email, String senha){
+		ResultSet rs = select("email = '"+ email +"' AND senha = '"+ senha +"'");
+		return (rs);
 	}
 
 	public Usuario getUsuario() {
