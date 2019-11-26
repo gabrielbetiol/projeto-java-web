@@ -32,6 +32,9 @@
     <link href="Assets/build/css/custom.min.css" rel="stylesheet">
   </head>
 
+  <%
+  	HttpSession httpSession = request.getSession();
+  %>
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -50,7 +53,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2><% out.print(request.getAttribute("email")); %></h2>
+                <h2><% out.print((String)httpSession.getAttribute("nome")); %></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -87,7 +90,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="Assets/production/images/img.jpg" alt="">John Doe
+                    <img src="Assets/production/images/img.jpg" alt=""><% out.print((String)httpSession.getAttribute("nome")); %>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="index.jsp"> Dashboard</a>
@@ -165,7 +168,7 @@
                     </div>
                   </div>
                 </div>
-
+				
 				<div class="col-md-12 col-sm-12 ">
                   <div id="chart_plot_01" class="demo-placeholder"></div>
                 </div>

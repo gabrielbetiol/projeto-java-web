@@ -31,6 +31,14 @@
     <!-- Custom Theme Style -->
     <link href="Assets/build/css/custom.min.css" rel="stylesheet">
   </head>
+  <%
+  	HttpSession httpSession = request.getSession();
+  	if(request.getParameter("novasenha") == request.getParameter("novasenha2")){
+  		out.print("Senhas Conferem");
+  	}else {
+  		out.print("Senhas nao conferem");
+  	}
+  %>
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -49,7 +57,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2><% out.print((String)httpSession.getAttribute("nome")); %></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -86,7 +94,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="Assets/production/images/img.jpg" alt="">John Doe
+                    <img src="Assets/production/images/img.jpg" alt=""><% out.print((String)httpSession.getAttribute("nome")); %>	
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="index.jsp"> Dashboard</a>
@@ -107,7 +115,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Cadastro</h3>
+                <h3>Editar Dados</h3>
               </div>
 
             </div>
@@ -129,17 +137,20 @@
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Nome <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <input type="text" id="first-name" required="required" class="form-control ">
+                          <input type="text" id="first-name" required="required" name="nome"
+                          	class="form-control" value="<% out.print((String)httpSession.getAttribute("nome")); %>">
                         </div>
                       </div>
 					  <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" for="cpf" >CPF <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 ">
-                          <input type="text" id="cpf" required="required" class="form-control " data-validate-length="11" >
+                          <input type="text" id="cpf" required="required" name="cpf"
+                          	class="form-control" value="<% out.print((String)httpSession.getAttribute("cpf")); %>" >
                         </div>
                       </div>
                       
+                      <!-- 
                       <div class="item form-group">
                         <label class="col-form-label col-md-3 col-sm-3 label-align">Genero</label>
                         <div class="col-md-6 col-sm-6 ">
@@ -154,19 +165,20 @@
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="col-form-label col-md-3 col-sm-3 label-align">Nacimento <span class="required">*</span>
+                        <label class="col-form-label col-md-3 col-sm-3 label-align">Nascimento <span class="required">*</span>
                         </label>
                         <div  class="col-md-6 col-sm-6 ">
                           <input type="text" class="form-control" data-inputmask="'mask': '99/99/9999'">
                           <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
-
+					  -->
 
                       <div class="form-group row ">
                         <label class="col-form-label col-md-3 col-sm-3 label-align" >E-mail</label>
                         <div class="col-md-6 col-sm-6  ">
-                          <input type="text" class="form-control" placeholder="Default Input">
+                          <input type="text" name="email"
+                          class="form-control" placeholder="Default Input" value="<% out.print((String)httpSession.getAttribute("email")); %>">
                         </div>
                       </div>
                       
@@ -174,7 +186,7 @@
                         <label class="col-form-label col-md-3 col-sm-3 label-align">Endereço <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6  ">
-                          <textarea class="form-control" rows="3" ></textarea>
+                          <textarea class="form-control" name="end" rows="3" ><% out.print((String)httpSession.getAttribute("end")); %></textarea>
                         </div>
                       </div>
 					  
@@ -187,14 +199,14 @@
                       <div class="item form-group">
                         <label for="password" class="col-form-label col-md-3 label-align">Nova senha </label>
                         <div class="col-md-3 col-sm-3">
-                          <input id="password" type="password" name="password" data-validate-length="6,8" class="form-control" required="required">
+                          <input id="password" type="password" name="novasenha" data-validate-length="6,8" class="form-control" required="required">
                         </div>
                       </div>
 					  
                       <div class="item form-group">
                         <label for="password2" class="col-form-label col-md-3 col-sm-3 label-align ">Digite novamente </label>
                         <div class="col-md-3 col-sm-3">
-                          <input id="password2" type="password" name="password2" data-validate-linked="password" class="form-control" required="required">
+                          <input id="password2" type="password" name="novasenha2" data-validate-linked="novasenha" class="form-control" required="required">
                         </div>
                       </div>
                       
@@ -203,8 +215,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9  offset-md-3">
-                          <button type="button" class="btn btn-primary">Cancelar</button>
-                          <button type="reset" class="btn btn-primary">Resetar</button>
+                          <button type="reset" class="btn btn-danger">Resetar</button>
                           <button type="submit" class="btn btn-success">Submeter</button>
                         </div>
                       </div>
@@ -278,6 +289,7 @@
 	    
     <!-- Initialize datetimepicker -->
 <script  type="text/javascript">
+   /*
    $(function () {
                 $('#myDatepicker').datetimepicker();
             });
@@ -309,6 +321,7 @@
     $("#datetimepicker7").on("dp.change", function(e) {
         $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
     });
+    */
 </script>
 	
   </body>

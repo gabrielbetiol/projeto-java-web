@@ -26,15 +26,6 @@ public class Usuario {
 		this.end		= end;
 	}
 	
-	public Usuario(String id, String email, String senha) {
-		this.id 	=  ((id=="") ? 0 : new Integer(id));
-		this.nome 	= "";
-		this.cpf	= "";
-		this.email	= email;
-		this.senha	= senha;
-		this.end	= "";
-	}
-	
 	public boolean checkLogin(){
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		ResultSet rs = usuarioDAO.checkLogin(this.getEmail(), this.getSenha());

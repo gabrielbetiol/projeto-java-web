@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="Assets/images/favicon.ico" type="image/ico" />
+	<link rel="icon" href="Assets/production/ximages/favicon.ico" type="image/ico" />
 
     <title>Local Farm </title>
 
@@ -31,15 +31,16 @@
 		if(request.getParameter("email") != null && (request.getParameter("senha") != null)) {
    			String email = request.getParameter("email").toString();
    			String senha = request.getParameter("senha").toString();
-        	Usuario usuario = new Usuario("", email, senha);
+        	Usuario usuario = new Usuario("","","",email,senha,"");
        		if ( usuario.checkLogin() ){
        			HttpSession httpSession = request.getSession(true);
-      			httpSession.setAttribute("email", usuario.getEmail());
-      			request.setAttribute("email", usuario.getEmail());
-      			request.setAttribute("id", usuario.getId	());
-      			request.setAttribute("nome", usuario.getNome());
-      			request.setAttribute("cpf", usuario.getCpf());
-      			request.setAttribute("end", usuario.getEndereco());
+       			
+       			httpSession.setAttribute("id", usuario.getId());
+    			httpSession.setAttribute("nome", usuario.getNome());
+    			httpSession.setAttribute("email", usuario.getEmail());
+    			httpSession.setAttribute("cpf", usuario.getCpf());
+    			httpSession.setAttribute("end", usuario.getEndereco());
+    			httpSession.setAttribute("senha", usuario.getSenha());
        			//out.print("Usuario Autenticado");
        			response.sendRedirect("index.jsp");
        			
