@@ -10,6 +10,8 @@ public class ProdVenda {
 	public ProdVenda() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	public int getIdProdVenda() {
 		return id_prod_venda;

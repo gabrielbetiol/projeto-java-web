@@ -1,5 +1,7 @@
 package producao;
 
+import java.sql.ResultSet;
+
 public class Producao {
 
 	private int 	id;
@@ -8,10 +10,16 @@ public class Producao {
 	private float 	preco_uni;
 	private String 	descricao;
 	private String 	data_prod;
-	private int 	id_usu;
+	private String 	idUsuario;
 	
 	public Producao() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public ResultSet producaoId (String idUSuario){
+		ProducaoDAO prodDAO = new ProducaoDAO();
+		ResultSet rs = prodDAO.producaoId(this.getIdUsuario());
+		return rs;
 	}
 
 	public int getId() {
@@ -22,12 +30,12 @@ public class Producao {
 		this.id = id;
 	}
 
-	public int getIdUsuario() {
-		return id_usu;
+	public String getIdUsuario() {
+		return idUsuario;
 	}
 
-	public void setIdUsuario(int idUsuario) {
-		this.id_usu = idUsuario;
+	public void setIdUsuario(String idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 	public int getQntd() {

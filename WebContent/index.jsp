@@ -1,5 +1,8 @@
+<%@page import="producao.Producao"%>
+<%@page import="graph.VendasProducao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri='/WEB-INF/cewolf.tld' prefix='cewolf' %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -168,11 +171,29 @@
                     </div>
                   </div>
                 </div>
-				
+				<!-- 
 				<div class="col-md-12 col-sm-12 ">
                   <div id="chart_plot_01" class="demo-placeholder"></div>
                 </div>
-				
+				 -->
+				<% 
+				Producao prod = new Producao();
+				prod.setIdUsuario(httpSession.getAttribute("id").toString());
+				//vp.printNome();
+				%>
+				<jsp:useBean id="bean" class="graph.VendasProducao"/>
+				<cewolf:chart id="grafico1" type="verticalbar" xaxislabel="Estados" yaxislabel="Valores(US$)">
+					<cewolf:gradientpaint>
+						<cewolf:point x="0" y="0" color="#FBFBFB" />
+						<cewolf:point x="350" y="0" color="#F3F3F3" />
+					</cewolf:gradientpaint>
+					<cewolf:data>
+						<cewolf:producer id="bean"/>
+					</cewolf:data>
+				</cewolf:chart>
+				<p>
+					<cewolf:img chartid="grafico1" renderer="/cewolf" width="500" height="300"/>
+				</p>
 				<div class="clearfix"></div>
 				
 			</br>	
@@ -218,7 +239,24 @@
                     </tr>
                     <tr>
                       <td>
-                        <canvas class="canvasDoughnut" height="200" width="200" style="margin: 15px 10px 10px 0"></canvas>
+                        <jsp:useBean id="pieData" class="graph.MaisVendidos"/>
+						<jsp:useBean id="pieToolTip"
+						    class="graph.CustomPieToolTipGenerator"/>
+						<% pageContext.setAttribute("pieChartViewToolTips",
+						    pieToolTip); %>
+						<cewolf:chart id="pieChart" title="Pie" type="pie">
+						    <cewolf:gradientpaint>
+						        <cewolf:point x="0" y="0" color="#FFFFFF" />
+						        <cewolf:point x="300" y="0" color="#DDDDFF" />
+						    </cewolf:gradientpaint>
+						    <cewolf:data>
+						        <cewolf:producer id="pieData" />
+						    </cewolf:data>
+						</cewolf:chart>
+						<cewolf:img chartid="pieChart" renderer="/cewolf"
+						    width="300" height="300">
+						    <cewolf:map tooltipgeneratorid="pieChartViewToolTips"/>
+						</cewolf:img>
                       </td>
                       <td>
                         <table class="tile_info">

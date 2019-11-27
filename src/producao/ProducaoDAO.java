@@ -1,5 +1,7 @@
 package producao;
 
+import java.sql.ResultSet;
+
 import database.DBQuery;
 
 public class ProducaoDAO extends DBQuery{
@@ -17,6 +19,11 @@ public class ProducaoDAO extends DBQuery{
 		this.setTable	("producao");
 		this.setFields	(new String[]{"id","tipo","qtd","preco_uni","descricao","data_prod", "id_usu"});
 		this.setKeyField("id");
+	}
+	
+	public ResultSet producaoId (String id) {
+		return null;
+		
 	}
 	
 	//funções para acesso dos dados de produção

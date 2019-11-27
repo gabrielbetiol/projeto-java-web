@@ -1,49 +1,29 @@
-<%@page import="usuario.Usuario"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<link rel="stylesheet" href="Assets/css/bootstrap.min.css" >
-<link rel="stylesheet" href="Assets/css/index.css">
+<%@page contentType="text/html"%>
+<%@taglib uri='/WEB-INF/cewolf.tld' prefix='cewolf' %>
+<HTML>
+<BODY>
+<H1>Page View Statistics</H1>
+<HR>
+<jsp:useBean id="pieData" class="graph.MaisVendidos"/>
+<jsp:useBean id="pieToolTip"
+    class="graph.CustomPieToolTipGenerator"/>
+<% pageContext.setAttribute("pieChartViewToolTips",
+    pieToolTip); %>
+<cewolf:chart id="pieChart" title="Pie" type="pie">
+    <cewolf:gradientpaint>
+        <cewolf:point x="0" y="0" color="#FFFFFF" />
+        <cewolf:point x="300" y="0" color="#DDDDFF" />
+    </cewolf:gradientpaint>
+    <cewolf:data>
+        <cewolf:producer id="pieData" />
+    </cewolf:data>
+</cewolf:chart>
+<cewolf:img chartid="pieChart" renderer="/cewolf"
+    width="300" height="300">
+    <cewolf:map tooltipgeneratorid="pieChartViewToolTips"/>
+</cewolf:img>
+<P>
 
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Graficos</title>
-</head>
-<body>
-		<h1>Vendas x Produção</h1>
-
-		<svg class="line-chart"></svg>
-	
-	<ul></ul>
-	
-	<script type="text/javascript" src="Assets/js/boostrap.js"></script>
-	<script type="text/javascript" src="Assets/js/d3.min.js"></script>
-	<script type="text/javascript" src="Assets/js/index.js"></script>
-	<script>
-		/*
-		var nomes = ['diego', 'joão', 'bruna', 'luana', 'marília'];
-		d3.select('ul')
-		  .selectAll('li')
-		  .data(nomes)
-		  .enter()
-		  .append('li')
-		  .text(function(nome) { return nome; });
-		
-		*/
-		/*
-		var svg = d3.select('svg');
-		 svg.append('rect');
-			.attr('x', 50)
-			.attr('y', 50)
-			.attr('width', 200)
-			.attr('height', 200)
-			.attr('fill', 'green');
-		*/
-		
-		
-	</script>
-
-</body>
-</html>
+</BODY>
+</HTML>
